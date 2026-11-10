@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="nl" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Startscherm </title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'></text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-mountain-lake">
+
+  <!-- Ambient Backdrop Image & Subtle Frost Overlay -->
+  <div class="wallpaper-background" id="wallpaper-bg"></div>
+  <div class="wallpaper-glass-tint"></div>
+
+  <!-- Main Application Wrapper -->
+  <div class="app-viewport">
+
+    <!-- LEFT FLOATING VERTICAL LIQUID DOCK (Close to edge) -->
+    <aside class="liquid-dock">
+      <button class="dock-btn active" data-view="all" title="Overzicht (Alles)">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <span class="dock-tooltip">Overzicht</span>
+      </button>
+
+      <button class="dock-btn" data-view="news" title="NU.nl Nieuws">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/>
+          <path d="M18 14h-8"/>
+          <path d="M15 18h-5"/>
+          <path d="M10 6h8v4h-8V6Z"/>
+        </svg>
+        <span class="dock-tooltip">NU.nl Nieuws</span>
+      </button>
+
+      <button class="dock-btn" data-view="apps" title="Quick Access & Programma's">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="7" height="7" x="3" y="3" rx="1"/>
+          <rect width="7" height="7" x="14" y="3" rx="1"/>
+          <rect width="7" height="7" x="14" y="14" rx="1"/>
+          <rect width="7" height="7" x="3" y="14" rx="1"/>
+        </svg>
+        <span class="dock-tooltip">Programma's</span>
+      </button>
+
+      <button class="dock-btn" data-view="todo" title="Herinneringen & Taken">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <span class="dock-tooltip">Taken</span>
+      </button>
+
+      <button class="dock-btn" data-view="notes" title="Notitieblok">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+          <line x1="10" y1="9" x2="8" y2="9"/>
+        </svg>
+        <span class="dock-tooltip">Notities</span>
+      </button>
+
+      <div class="dock-spacer"></div>
+
+      <button class="dock-btn add-btn" id="dock-add-tile-btn" title="Nieuwe tegel toevoegen">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"/>
+          <line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        <span class="dock-tooltip">Tegel Toevoegen</span>
+      </button>
+    </aside>
+
+    <!-- MAIN DASHBOARD SURFACE -->
+    <main class="liquid-surface">
+
+      <!-- TOP BAR: Controls & Floating Weather Card (Right-aligned, leaving center totally free) -->
+      <header class="surface-top-bar">
+        <div class="top-bar-left">
+          <!-- Left side kept clear for a clean breath of air -->
+        </div>
+
+        <div class="top-bar-right">
+          <!-- Floating Weather Card (Liquid Glass) -->
+          <div class="weather-float-card liquid-glass" id="weather-card" title="Klik om weerlocatie te wijzigen">
+            <div class="weather-float-top">
+              <span class="weather-float-icon" id="weather-card-icon">⛅</span>
+              <span class="weather-float-temp" id="weather-card-temp">--°C</span>
+            </div>
+            <div class="weather-float-desc" id="weather-card-desc">Laden...</div>
+            <div class="weather-float-city" id="weather-card-city">Amsterdam, NL</div>
+          </div>
+
+          <!-- Quick Control Center Pill -->
+          <div class="controls-pill liquid-chip">
+            <button class="chip-btn" id="toggle-edit-mode-btn" title="Tegels aanpassen">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                <path d="m15 5 4 4"/>
+              </svg>
+            </button>
+            <button class="chip-btn" id="theme-toggle-btn" title="Wissel Licht / Donker glas">
+              <svg id="theme-icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2"/>
+                <path d="M12 20v2"/>
+                <path d="m4.93 4.93 1.41 1.41"/>
+                <path d="m17.66 17.66 1.41 1.41"/>
+                <path d="M2 12h2"/>
+                <path d="M20 12h2"/>
+                <path d="m6.34 17.66-1.41 1.41"/>
+                <path d="m19.07 4.93-1.41 1.41"/>
+              </svg>
+            </button>
+            <button class="chip-btn" id="open-settings-modal-btn" title="Instellingen & Achtergronden">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- HERO CENTER: GREETING (CLEAN TEXT), MONUMENTAL TIME (NO PM), GOOGLE SEARCH -->
+      <section class="liquid-hero">
+
+        <!-- Welkomsbericht BOVEN de tijd, puur typografisch zonder venster -->
+        <div class="pure-greeting" id="pure-greeting-text">Goedemiddag, Dave</div>
+
+        <!-- Monumental Time Display (Groter, gecentreerd, GEEN PM) -->
+        <div class="clock-stage">
+          <div class="display-time-wrap">
+            <span class="time-main" id="clock-main">00:00</span>
+          </div>
+          <div class="display-date" id="date-main">Dinsdag, 10 november</div>
+        </div>
+
+        <!-- Spotlight Google Search Bar -->
+        <form class="liquid-spotlight" id="google-search-form" action="https://www.google.com/search" method="get">
+          <span class="spotlight-glass-icon">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.35-4.35"/>
+            </svg>
+          </span>
+          <input 
+            type="text" 
+            name="q" 
+            id="search-input" 
+            placeholder="Search Google or type a URL" 
+            autocomplete="off" 
+            spellcheck="false"
+            autofocus
+          >
+          <div class="spotlight-kbd-pill">⌘K</div>
+        </form>
+      </section>
+
+      <!-- MAIN LIQUID GLASS CARDS ROW -->
+      <section class="liquid-cards-row" id="main-cards-row">
+
+        <!-- CARD 1: NU.nl Nieuws -->
+        <article class="liquid-card card-news liquid-glass" id="card-news">
+          <div class="card-header">
+            <div class="card-title-wrap">
+              <span class="nu-square-badge">NU</span>
+              <h3>Laatste Nieuws</h3>
+            </div>
+            <div class="header-action-group">
+              <select id="news-category-select" class="liquid-select" title="Kies nieuwscategorie">
+                <option value="Algemeen">Algemeen</option>
+                <option value="Tech">Tech</option>
+                <option value="Economie">Economie</option>
+                <option value="Sport">Sport</option>
+              </select>
+              <a href="https://www.nu.nl" target="_blank" rel="noopener noreferrer" class="link-action">Alles bekijken ↗</a>
+            </div>
+          </div>
+
+          <div class="news-liquid-list" id="news-liquid-list">
+            <div class="liquid-loading">
+              <span class="pulse-ring"></span>
+              <p>Nieuws ophalen van NU.nl...</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 2: Quick Access / Programma's Grid -->
+        <article class="liquid-card card-quick-access liquid-glass" id="card-quick-access">
+          <div class="card-header">
+            <h3>Quick Access</h3>
+            <button class="liquid-subtle-btn" id="edit-quick-access-btn">Edit</button>
+          </div>
+
+          <div class="quick-access-grid" id="quick-access-grid">
+            <!-- Rendered dynamically as tiles -->
+          </div>
+        </article>
+
+        <!-- CARD 3: To Do List -->
+        <article class="liquid-card card-todo liquid-glass" id="card-todo">
+          <div class="card-header">
+            <h3>To Do</h3>
+            <button class="liquid-subtle-btn" id="open-add-todo-btn">+ Add</button>
+          </div>
+
+          <!-- Inline Quick Add Input -->
+          <form class="todo-quick-add-form" id="todo-add-form" style="display: none;">
+            <input type="text" id="todo-input-field" placeholder="Typ nieuwe taak en druk op Enter..." autocomplete="off">
+          </form>
+
+          <ul class="liquid-todo-list" id="liquid-todo-list">
+            <!-- Rendered dynamically -->
+          </ul>
+
+          <div class="todo-card-footer">
+            <span id="todo-stats-label">Completed 1 / 4</span>
+            <div class="liquid-progress-bar">
+              <div class="liquid-progress-fill" id="todo-progress-fill" style="width: 25%;"></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 4: Focus & Sound Player (Tall Nature Card) -->
+        <article class="liquid-card card-focus-player liquid-glass" id="card-focus-player">
+          <div class="focus-player-cover" id="focus-cover-bg">
+            <div class="focus-overlay-content">
+              <span class="focus-badge">Focus</span>
+              <div class="focus-title" id="focus-track-name">Alpine Rain</div>
+              <div class="focus-subtitle" id="focus-track-sub">Achtergrondgeluid</div>
+
+              <!-- Nature Player Controls -->
+              <div class="player-controls">
+                <button class="ctrl-btn" id="player-prev-btn" title="Vorige klank">⏮</button>
+                <button class="ctrl-btn play-pause-btn" id="player-play-btn" title="Afspelen / Pauzeren">
+                  <span id="play-btn-icon">▶</span>
+                </button>
+                <button class="ctrl-btn" id="player-next-btn" title="Volgende klank">⏭</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- BOTTOM ROW: NOTES & PURE INSPIRATION QUOTE (Handige koppelingen verwijderd) -->
+      <section class="liquid-bottom-row" id="bottom-cards-row">
+
+        <!-- Bottom Card 1: Notes -->
+        <article class="liquid-card bottom-card liquid-glass" id="card-notes">
+          <div class="card-header">
+            <div class="card-title-wrap">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                <polyline points="14 2 14 8 20 8"/>
+              </svg>
+              <h3>Notes</h3>
+            </div>
+            <span class="saved-indicator" id="notes-status-badge">Opgeslagen</span>
+          </div>
+          <textarea id="liquid-notes-input" placeholder="Schrijf hier snelle ideeën, telefoonnummers of gedachten..."></textarea>
+        </article>
+
+        <!-- Bottom 2: Pure Quote (Groter, Vrijstaand & Geen Venster) -->
+        <div class="pure-quote-container" id="card-quote">
+          <p class="quote-body" id="quote-text">"The best way to predict the future is to create it."</p>
+          <div class="quote-author-wrap">
+            <span class="quote-author" id="quote-author">— Peter Drucker</span>
+            <button class="quote-refresh-btn" id="refresh-quote-btn" title="Nieuw citaat">↻</button>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- =========================================================================
+       MODAL: Tegel Toevoegen / Bewerken
+       ========================================================================= -->
+  <div class="liquid-modal-backdrop" id="tile-modal" style="display: none;">
+    <div class="liquid-modal liquid-glass">
+      <div class="modal-top">
+        <h3 id="tile-modal-title">Quick Access Tegel Aanpassen</h3>
+        <button class="modal-close-pill" id="close-tile-modal">&times;</button>
+      </div>
+
+      <form id="tile-form">
+        <input type="hidden" id="tile-form-id">
+
+        <div class="liquid-input-group">
+          <label for="tile-name-input">Naam programma of site</label>
+          <input type="text" id="tile-name-input" placeholder="bijv. YouTube, Gmail, Notion" required>
+        </div>
+
+        <div class="liquid-input-group">
+          <label for="tile-url-input">Webadres (URL)</label>
+          <input type="text" id="tile-url-input" placeholder="https://..." required>
+        </div>
+
+        <div class="liquid-input-group">
+          <label>Tegel Icoon / Logo</label>
+          <div class="tile-icon-upload-stage">
+            <div class="tile-icon-preview-box" id="tile-icon-preview-box">
+              <span id="tile-icon-preview-display">🌐</span>
+            </div>
+            <div class="tile-icon-options">
+              <button type="button" class="liquid-btn-sec btn-upload" id="trigger-file-upload-btn">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="17 8 12 3 7 8"/>
+                  <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+                <span>Eigen afbeelding uploaden</span>
+              </button>
+              <input type="file" id="tile-file-input" accept="image/*" style="display: none;">
+              <button type="button" class="liquid-subtle-btn btn-clear-icon" id="clear-custom-icon-btn" style="display: none;">✕ Verwijder</button>
+            </div>
+          </div>
+          <div class="tile-icon-manual-row">
+            <input type="text" id="tile-icon-input" placeholder="Of typ emoji (bijv. 🎨) / laat leeg voor automatisch logo">
+          </div>
+          <small class="upload-hint">Upload een eigen PNG, JPG, SVG of WebP afbeelding vanaf je computer.</small>
+        </div>
+
+        <div class="modal-footer-btns">
+          <button type="button" class="liquid-btn-sec" id="cancel-tile-btn">Annuleren</button>
+          <button type="submit" class="liquid-btn-pri" id="save-tile-btn">Opslaan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: Instellingen & Achtergrond
+       ========================================================================= -->
+  <div class="liquid-modal-backdrop" id="settings-modal" style="display: none;">
+    <div class="liquid-modal settings-modal-wide liquid-glass">
+      <div class="modal-top">
+        <h3>Dashboard Instellingen</h3>
+        <button class="modal-close-pill" id="close-settings-modal">&times;</button>
+      </div>
+
+      <div class="settings-body">
+        
+        <!-- Wallpaper Selection -->
+        <div class="settings-section">
+          <label class="section-label">Achtergrond & Sfeer</label>
+          <div class="wallpapers-row">
+            <button class="wp-card active" data-bg="bg-mountain-lake">
+              <span class="wp-thumb thumb-lake"></span>
+              <span>Alpine Lake</span>
+            </button>
+            <button class="wp-card" data-bg="bg-misty-forest">
+              <span class="wp-thumb thumb-forest"></span>
+              <span>Misty Forest</span>
+            </button>
+            <button class="wp-card" data-bg="bg-soft-minimal">
+              <span class="wp-thumb thumb-minimal"></span>
+              <span>Clean Cloud</span>
+            </button>
+            <button class="wp-card" data-bg="bg-dark-glass">
+              <span class="wp-thumb thumb-dark"></span>
+              <span>Dark Liquid</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Custom Wallpaper URL -->
+        <div class="settings-section">
+          <label class="section-label" for="custom-bg-input">Eigen achtergrondafbeelding (URL)</label>
+          <div class="url-input-wrap">
+            <input type="text" id="custom-bg-input" placeholder="https://images.unsplash.com/...">
+            <button type="button" id="apply-custom-bg" class="liquid-btn-sec">Toepassen</button>
+          </div>
+        </div>
+
+        <!-- Personalization -->
+        <div class="settings-section">
+          <label class="section-label" for="user-name-input">Begroetingsnaam</label>
+          <input type="text" id="user-name-input" class="liquid-text-input" placeholder="Dave">
+        </div>
+
+        <!-- Weather City -->
+        <div class="settings-section">
+          <label class="section-label" for="weather-city-select">Stad voor weerbericht</label>
+          <select id="weather-city-select" class="liquid-select-wide">
+            <option value="Amsterdam">Amsterdam, NL</option>
+            <option value="Rotterdam">Rotterdam, NL</option>
+            <option value="Utrecht">Utrecht, NL</option>
+            <option value="Den Haag">Den Haag, NL</option>
+            <option value="Eindhoven">Eindhoven, NL</option>
+            <option value="Groningen">Groningen, NL</option>
+            <option value="Maastricht">Maastricht, NL</option>
+            <option value="Zwolle">Zwolle, NL</option>
+            <option value="Arnhem">Arnhem, NL</option>
+            <option value="Antwerpen">Antwerpen, BE</option>
+            <option value="Brussel">Brussel, BE</option>
+            <option value="Berlin">Berlijn, DE</option>
+          </select>
+        </div>
+
+        <!-- Backup -->
+        <div class="settings-section">
+          <label class="section-label">Gegevensbeheer</label>
+          <div class="backup-btns">
+            <button type="button" class="liquid-btn-sec" id="export-json-btn">Export Instellingen (JSON)</button>
+            <button type="button" class="liquid-btn-sec" id="import-json-btn">Import Instellingen</button>
+            <input type="file" id="import-file-input" accept=".json" style="display: none;">
+            <button type="button" class="liquid-btn-danger" id="reset-defaults-btn">Herstel Fabrieksinstellingen</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
