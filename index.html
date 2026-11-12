@@ -86,43 +86,67 @@
         </div>
 
         <div class="top-bar-right">
-          <!-- Floating Weather Card (Liquid Glass) -->
-          <div class="weather-float-card liquid-glass" id="weather-card" title="Klik om weerlocatie te wijzigen">
-            <div class="weather-float-top">
-              <span class="weather-float-icon" id="weather-card-icon">⛅</span>
-              <span class="weather-float-temp" id="weather-card-temp">--°C</span>
-            </div>
-            <div class="weather-float-desc" id="weather-card-desc">Laden...</div>
-            <div class="weather-float-city" id="weather-card-city">Amsterdam, NL</div>
-          </div>
+          <div class="top-bar-right-cluster">
+            <div class="top-bar-actions-row">
+              <!-- Floating Weather Card (Liquid Glass) -->
+              <div class="weather-float-card liquid-glass" id="weather-card" title="Klik om weerlocatie te wijzigen">
+                <div class="weather-float-top">
+                  <span class="weather-float-icon" id="weather-card-icon">⛅</span>
+                  <span class="weather-float-temp" id="weather-card-temp">--°C</span>
+                </div>
+                <div class="weather-float-desc" id="weather-card-desc">Laden...</div>
+                <div class="weather-float-city" id="weather-card-city">Amsterdam, NL</div>
+              </div>
 
-          <!-- Quick Control Center Pill -->
-          <div class="controls-pill liquid-chip">
-            <button class="chip-btn" id="toggle-edit-mode-btn" title="Tegels aanpassen">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
-                <path d="m15 5 4 4"/>
-              </svg>
-            </button>
-            <button class="chip-btn" id="theme-toggle-btn" title="Wissel Licht / Donker glas">
-              <svg id="theme-icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="4"/>
-                <path d="M12 2v2"/>
-                <path d="M12 20v2"/>
-                <path d="m4.93 4.93 1.41 1.41"/>
-                <path d="m17.66 17.66 1.41 1.41"/>
-                <path d="M2 12h2"/>
-                <path d="M20 12h2"/>
-                <path d="m6.34 17.66-1.41 1.41"/>
-                <path d="m19.07 4.93-1.41 1.41"/>
-              </svg>
-            </button>
-            <button class="chip-btn" id="open-settings-modal-btn" title="Instellingen & Achtergronden">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="3"/>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-              </svg>
-            </button>
+              <!-- Quick Control Center Pill -->
+              <div class="controls-pill liquid-chip">
+                <button class="chip-btn" id="toggle-edit-mode-btn" title="Tegels aanpassen">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                    <path d="m15 5 4 4"/>
+                  </svg>
+                </button>
+                <button class="chip-btn" id="theme-toggle-btn" title="Wissel Licht / Donker glas">
+                  <svg id="theme-icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M12 2v2"/>
+                    <path d="M12 20v2"/>
+                    <path d="m4.93 4.93 1.41 1.41"/>
+                    <path d="m17.66 17.66 1.41 1.41"/>
+                    <path d="M2 12h2"/>
+                    <path d="M20 12h2"/>
+                    <path d="m6.34 17.66-1.41 1.41"/>
+                    <path d="m19.07 4.93-1.41 1.41"/>
+                  </svg>
+                </button>
+                <button class="chip-btn" id="open-settings-modal-btn" title="Instellingen & Achtergronden">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Compact Focus Sound Mini-Player under Weather/Settings -->
+            <div class="mini-sound-widget liquid-glass" id="mini-sound-widget">
+              <div class="mini-sound-info">
+                <span class="mini-sound-bars" id="sound-equalizer">
+                  <i></i><i></i><i></i><i></i>
+                </span>
+                <div class="mini-sound-meta">
+                  <span class="mini-sound-label">Focus</span>
+                  <span class="mini-sound-title" id="focus-track-name">Alpine Rain</span>
+                </div>
+              </div>
+              <div class="mini-sound-actions">
+                <button class="mini-sound-btn" id="player-prev-btn" title="Vorige klank">⏮</button>
+                <button class="mini-sound-btn mini-sound-play" id="player-play-btn" title="Afspelen / Pauzeren">
+                  <span id="play-btn-icon">▶</span>
+                </button>
+                <button class="mini-sound-btn" id="player-next-btn" title="Volgende klank">⏭</button>
+              </div>
+            </div>
           </div>
         </div>
       </header>
@@ -223,26 +247,6 @@
             <span id="todo-stats-label">Completed 1 / 4</span>
             <div class="liquid-progress-bar">
               <div class="liquid-progress-fill" id="todo-progress-fill" style="width: 25%;"></div>
-            </div>
-          </div>
-        </article>
-
-        <!-- CARD 4: Focus & Sound Player (Tall Nature Card) -->
-        <article class="liquid-card card-focus-player liquid-glass" id="card-focus-player">
-          <div class="focus-player-cover" id="focus-cover-bg">
-            <div class="focus-overlay-content">
-              <span class="focus-badge">Focus</span>
-              <div class="focus-title" id="focus-track-name">Alpine Rain</div>
-              <div class="focus-subtitle" id="focus-track-sub">Achtergrondgeluid</div>
-
-              <!-- Nature Player Controls -->
-              <div class="player-controls">
-                <button class="ctrl-btn" id="player-prev-btn" title="Vorige klank">⏮</button>
-                <button class="ctrl-btn play-pause-btn" id="player-play-btn" title="Afspelen / Pauzeren">
-                  <span id="play-btn-icon">▶</span>
-                </button>
-                <button class="ctrl-btn" id="player-next-btn" title="Volgende klank">⏭</button>
-              </div>
             </div>
           </div>
         </article>

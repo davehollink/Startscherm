@@ -256,17 +256,31 @@ body.bg-custom .wallpaper-background {
 /* Surface Top Bar */
 .surface-top-bar {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  height: 38px;
+  min-height: 38px;
   flex-shrink: 0;
+  z-index: 20;
 }
 
 .top-bar-right {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  align-items: flex-end;
   margin-left: auto;
+}
+
+.top-bar-right-cluster {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 7px;
+}
+
+.top-bar-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .liquid-chip {
@@ -478,7 +492,7 @@ body.bg-custom .wallpaper-background {
    ========================================================================== */
 .liquid-cards-row {
   display: grid;
-  grid-template-columns: 2.2fr 2.6fr 2fr 1.6fr;
+  grid-template-columns: 1.15fr 1.35fr 1.1fr;
   gap: 14px;
   align-items: stretch;
   flex: 1;
