@@ -309,9 +309,10 @@ class LiquidDashboard {
     this.todoStatsLabel = document.getElementById('todo-stats-label');
     this.todoProgressFill = document.getElementById('todo-progress-fill');
 
-    // Focus Sound Player Card
+    // Focus Sound Player Mini-Widget
     this.focusTrackName = document.getElementById('focus-track-name');
     this.focusTrackSub = document.getElementById('focus-track-sub');
+    this.soundEqualizer = document.getElementById('sound-equalizer');
     this.playerPlayBtn = document.getElementById('player-play-btn');
     this.playBtnIcon = document.getElementById('play-btn-icon');
     this.playerPrevBtn = document.getElementById('player-prev-btn');
@@ -423,19 +424,21 @@ class LiquidDashboard {
     // Sound Controls
     this.playerPlayBtn.addEventListener('click', () => {
       const playing = this.soundSystem.toggle();
-      this.playBtnIcon.textContent = playing ? '⏸' : '▶';
+      this.updateSoundPlayerUI(playing);
     });
 
     this.playerNextBtn.addEventListener('click', () => {
       const trk = this.soundSystem.next();
-      this.focusTrackName.textContent = trk.name;
-      this.focusTrackSub.textContent = trk.sub;
+      if (this.focusTrackName) this.focusTrackName.textContent = trk.name;
+      if (this.focusTrackSub) this.focusTrackSub.textContent = trk.sub;
+      this.updateSoundPlayerUI(this.soundSystem.isPlaying);
     });
 
     this.playerPrevBtn.addEventListener('click', () => {
       const trk = this.soundSystem.prev();
-      this.focusTrackName.textContent = trk.name;
-      this.focusTrackSub.textContent = trk.sub;
+      if (this.focusTrackName) this.focusTrackName.textContent = trk.name;
+      if (this.focusTrackSub) this.focusTrackSub.textContent = trk.sub;
+      this.updateSoundPlayerUI(this.soundSystem.isPlaying);
     });
 
     // NU.nl News Category change
@@ -589,6 +592,23 @@ class LiquidDashboard {
         if (e.target === m) this.closeAllModals();
       });
     });
+  }
+
+  // Update Mini Sound Player UI State (Equalizer animation, Play/Pause Icon)
+  updateSoundPlayerUI(playing) {
+    if (this.soundEqualizer) {
+      this.soundEqualizer.classList.toggle('playing', playing);
+    }
+    if (this.playerPlayBtn) {
+      this.playerPlayBtn.classList.toggle('is-playing', playing);
+    }
+    if (this.playBtnIcon) {
+      if (playing) {
+        this.playBtnIcon.innerHTML = `<svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>`;
+      } else {
+        this.playBtnIcon.innerHTML = `<svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><polygon points="7 4 19 12 7 20 7 4"/></svg>`;
+      }
+    }
   }
 
   // Purposeful view switcher for dock tabs
